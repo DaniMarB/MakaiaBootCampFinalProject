@@ -1,0 +1,304 @@
+{
+	"info": {
+		"_postman_id": "a5268c56-3b27-42d6-a66a-77e8e9821ccf",
+		"name": "Final Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28964339"
+	},
+	"item": [
+		{
+			"name": "Create project",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Project 2\",\r\n    \"description\":\"Test\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/vi/projects",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"vi",
+						"projects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit project by ID",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Project edited\",\r\n    \"description\":\"Test edited\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/vi/projects/fdd841d7-f51e-4f88-8405-3ff89448f0a3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"vi",
+						"projects",
+						"fdd841d7-f51e-4f88-8405-3ff89448f0a3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete project by ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Project edited\",\r\n    \"description\":\"Test edited\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/vi/projects/fdd841d7-f51e-4f88-8405-3ff89448f0a3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"vi",
+						"projects",
+						"fdd841d7-f51e-4f88-8405-3ff89448f0a3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search project by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/vi/projects/fdd841d7-f51e-4f88-8405-3ff89448f0a3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"vi",
+						"projects",
+						"fdd841d7-f51e-4f88-8405-3ff89448f0a3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consult Projects",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/vi/projects/ProjectList",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"vi",
+						"projects",
+						"ProjectList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete task by ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Project edited\",\r\n    \"description\":\"Test edited\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/vi/projects/fdd841d7-f51e-4f88-8405-3ff89448f0a3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"vi",
+						"projects",
+						"fdd841d7-f51e-4f88-8405-3ff89448f0a3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search task by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/vi/projects/fdd841d7-f51e-4f88-8405-3ff89448f0a3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"vi",
+						"projects",
+						"fdd841d7-f51e-4f88-8405-3ff89448f0a3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create task",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Project 2\",\r\n    \"description\":\"Test\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/vi/projects",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"vi",
+						"projects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update task status",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"status\": \"INPROGRESS\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/vi/tasks/c6e16e9e-a9c0-4322-8ee5-3819ce116057",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"vi",
+						"tasks",
+						"c6e16e9e-a9c0-4322-8ee5-3819ce116057"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Tasks by Due date",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/vi/projects/due-task?page=1&size=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"vi",
+						"projects",
+						"due-task"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "size",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Project - Tasks Board",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Project-ID",
+						"value": "7b4db4ae-3aa4-4f84-8736-300a5de185a6/board",
+						"type": "text"
+					},
+					{
+						"key": "Project-Name",
+						"value": "Project 2",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/vi/projects/7b4db4ae-3aa4-4f84-8736-300a5de185a6/board",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"vi",
+						"projects",
+						"7b4db4ae-3aa4-4f84-8736-300a5de185a6",
+						"board"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
