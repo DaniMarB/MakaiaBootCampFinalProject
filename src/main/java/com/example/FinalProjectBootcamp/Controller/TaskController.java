@@ -27,8 +27,8 @@ public class TaskController {
     }
 
     @DeleteMapping("{id}")
-    public void deleteTask(@PathVariable UUID id){
-        service.deleteTask(id);
+    public ResponseEntity deleteTask(@PathVariable UUID id){
+        return service.deleteTask(id);
     }
 
     @GetMapping("{id}")

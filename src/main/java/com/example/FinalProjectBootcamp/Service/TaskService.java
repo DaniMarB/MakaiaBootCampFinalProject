@@ -30,10 +30,13 @@ public class TaskService {
 
     ArrayList<Task> tasksList = new ArrayList<>();
 
-    public void deleteTask (UUID id){
+    public ResponseEntity deleteTask (UUID id){
         Task taskFound = taskRepository.getReferenceById(id);
         if(!taskRepository.findById(id).isEmpty()){
             taskRepository.delete(taskFound);
+            return ResponseEntity.ok("Task deleted");
+        }else{
+            return ResponseEntity.notFound().build();
         }
     }
 
