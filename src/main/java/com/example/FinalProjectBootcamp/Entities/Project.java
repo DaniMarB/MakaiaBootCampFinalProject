@@ -1,6 +1,8 @@
 package com.example.FinalProjectBootcamp.Entities;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -14,22 +16,29 @@ import java.util.UUID;
 public class Project {
 
     @Id
-    @GeneratedValue(generator = "uuid-hibernate-generator")
+    @GeneratedValue(strategy = GenerationType.IDENTITY,generator = "uuid-hibernate-generator")
     @GenericGenerator(name = "uuid-hibernate-generator", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(columnDefinition = "BINARY(16)")
     private UUID id;
 
     @Column(name = "name", nullable = false)
     private String name;
     @Column(name = "description")
     private String description;
-    @Column(name = "status", nullable = false)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
     private ProjectStatus status;
-    @Column(name = "createdDate", nullable = false)
+    @Column(name = "createdDate")
     private LocalDate createdDate;
-    @Column(name = "lastUpdateDate", nullable = false)
+    @Column(name = "lastUpdateDate")
     private LocalDate lastUpdateDate;
 
 
+    public Project() {
+        this.id = UUID.randomUUID();
+        this.status = ProjectStatus.ACTIVE;
+        this.createdDate = LocalDate.now();
+    }
 
     public Project(String name) {
         this.id = UUID.randomUUID();
@@ -45,9 +54,11 @@ public class Project {
         this.createdDate = LocalDate.now();
     }
 
-    @OneToMany(mappedBy = "project")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "project", cascade = CascadeType.ALL)
     private List<Task> tasks = new ArrayList<>();
-
+    public void addTask (Task task){
+        tasks.add(task);
+    }
 
     public UUID getId() {
         return id;
@@ -95,6 +106,14 @@ public class Project {
 
     public void setLastUpdateDate(LocalDate lastUpdateDate) {
         this.lastUpdateDate = lastUpdateDate;
+    }
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
     }
 
     @Override

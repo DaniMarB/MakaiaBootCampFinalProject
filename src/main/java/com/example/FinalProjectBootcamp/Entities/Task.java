@@ -1,5 +1,6 @@
 package com.example.FinalProjectBootcamp.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -12,16 +13,18 @@ import java.util.UUID;
 public class Task {
 
     @Id
-    @GeneratedValue(generator = "uuid-hibernate-generator")
+    @GeneratedValue(strategy = GenerationType.IDENTITY,generator = "uuid-hibernate-generator")
     @GenericGenerator(name = "uuid-hibernate-generator", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(columnDefinition = "BINARY(16)")
     private UUID id;
     @Column(name = "name", nullable = false)
     private String name;
     @Column(name = "description", nullable = false)
     private String description;
-    @Column(name = "status", nullable = false)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
     private TaskStatus status;
-
+    @Enumerated(EnumType.STRING)
     @Column(name = "type", nullable = false)
     private TaskType type;
     @Column(name = "startDate", nullable = false)
@@ -32,13 +35,18 @@ public class Task {
     private LocalDateTime createdDate;
     @Column(name = "lastUpdateDate")
     private LocalDateTime lastUpdateDate;
-
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
+    @JoinColumn(name="project_id")
+    private Project project;
 
     public Task() {
+        this.id = UUID.randomUUID();
+        this.status = TaskStatus.TODO;
+        this.createdDate = LocalDateTime.now();
     }
 
-    public Task(UUID id, String name, String description, TaskStatus status, TaskType type, LocalDate startDate, LocalDate dueDate, Project projectAssociated) {
+    public Task(String name, String description, TaskType type, LocalDate startDate, LocalDate dueDate, Project project) {
         this.id = UUID.randomUUID();
         this.name = name;
         this.description = description;
@@ -47,10 +55,8 @@ public class Task {
         this.startDate = startDate;
         this.dueDate = dueDate;
         this.createdDate = LocalDateTime.now();
+        this.project = project;
     }
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Project project;
 
     public UUID getId() {
         return id;
@@ -124,10 +130,18 @@ public class Task {
         this.lastUpdateDate = lastUpdateDate;
     }
 
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
+
     @Override
     public String toString() {
         return "Task{" +
-                "id='" + id + '\'' +
+                "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", status=" + status +
@@ -136,6 +150,7 @@ public class Task {
                 ", dueDate=" + dueDate +
                 ", createdDate=" + createdDate +
                 ", lastUpdateDate=" + lastUpdateDate +
+                ", project=" + project +
                 '}';
     }
 }
