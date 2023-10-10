@@ -25,8 +25,12 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain (HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .authorizeHttpRequests(authorizeRequests -> authorizeRequests
-                        .antMatchers("/").hasRole("ADMIN")
+                        //.antMatchers("/").hasRole("ADMIN")
                         .antMatchers(HttpMethod.GET, "/**").hasAnyRole("ADMIN", "USER")
+                        .antMatchers(HttpMethod.POST, "/**").hasRole("ADMIN")
+                        .antMatchers(HttpMethod.DELETE, "/**").hasRole("ADMIN")
+                        .antMatchers(HttpMethod.PATCH, "/**").hasRole("ADMIN")
+                        .antMatchers(HttpMethod.PUT, "/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults())
@@ -39,8 +43,8 @@ public class SecurityConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        UserDetails user = User.withUsername("admin")
-                .password(passwordEncoder().encode("ad123"))
+        UserDetails user = User.withUsername("master")
+                .password(passwordEncoder().encode("admin3366"))
                 .roles("ADMIN")
                 .build();
 
