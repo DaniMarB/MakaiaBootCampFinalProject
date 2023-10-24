@@ -86,6 +86,9 @@ Permite mostrar las tareas de un proyecto específico, identificado por su id, c
 ### GET localhost:8080/vi/projects/{id}
 Permite traer las tareas de un proyecto específico y agrupa las mismas por el estado en el que estén
 
+# Diagrama Entidad-Relación
+![DER](https://github.com/DaniMarB/MakaiaBootCampFinalProject/blob/master/Diagrama%20entidad-relacion.jpg?raw=true)
+
 
 
 
